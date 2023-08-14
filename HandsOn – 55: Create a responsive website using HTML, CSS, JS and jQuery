@@ -1,0 +1,173 @@
+Index.html
+-----------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle View - Jquery</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="fill-details">
+        <h1>Add Student Data</h1>
+        <form id="fill-form">
+            <div class="form-containers">
+                <label for="rollno" class="abbrev">Roll No.</label>
+                <input type="number" id="rollno" class="abbrevdata">
+            </div>
+            <div class="form-containers">
+                <label for="name" class="abbrev">Name</label>
+                <input type="text" id="name" class="abbrevdata">
+            </div>
+            <div class="form-containers">
+                <label for="marks" class="abbrev">Marks</label>
+                <input type="number" id="marks" class="abbrevdata">
+            </div>
+            <div>
+                <input type="submit" value="Add Details" id="button-1">
+            </div>
+        </form>
+    </div>
+    <div id="output">
+        <span id="output-details">
+            </span>
+    </div>
+    <div id="container">
+        </div>  
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
+
+Style.css:
+-----------
+body{
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+
+}
+
+#fill-details{
+    /* border:1px solid black; */
+    width:60vw;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1{
+    /* border:1px solid black; */
+    position: relative;
+    top:10vh;
+}
+
+#fill-form{
+    /* border:1px solid black; */
+    position: relative;
+    top:15vh;
+    height:50vh;
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.abbrev{
+    position: absolute;
+    left:8vw;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.abbrevdata{
+    position: absolute;
+    left:25vw;
+    width: 170px;
+    height: 25px;
+}
+
+#button-1{
+    position: absolute;
+    left: 18vw;
+    top: 50vh;
+    height: 50px;
+    width: 140px;
+    text-align: center;
+    border: 1px solid aqua;
+    background-color: honeydew;
+    font-family: serif;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+#button-1:hover{
+    box-shadow: 0px 0px 3px 1px cadetblue;
+}
+
+#output{
+    /* border:1px solid black; */
+    border-left:1px solid gray;
+    width: 39vw;
+    height: 90vh;
+}
+
+#output-details{
+    /* border:1px solid black;  */
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    width: 99%;
+}
+
+p:nth-child(2n){
+    background-color:lightgray;
+}
+
+p{
+    /* border:1px solid black; */
+    position: relative;
+    font-size: 1.3rem;
+    padding: 2%;
+    text-align: left;
+    padding-left: 0.5cm;
+    margin: 2px 2px;
+    /* height: inherit; */
+}
+
+b{
+    background-color: green;
+    color: honeydew;
+    font-weight: 500;
+}
+
+
+Script.js:
+-------------
+$(function(){
+
+    $("#button-1").on("click",function(e){
+        e.preventDefault();
+        const rollNo=$("#rollno").val();
+        const nameStudent=$("#name").val();
+        const marksObtained=$("#marks").val();
+
+        if((rollNo==='') || (nameStudent==='') || (marksObtained==='')){
+            alert("Please fill all the fields");
+        }
+        else{
+            var appendText="<p>Roll no - <b>&nbsp;"+rollNo+"&nbsp;</b> , <b>&nbsp;"+nameStudent+"&nbsp;</b> have got <b>&nbsp;"+marksObtained+"&nbsp;</b> marks</p>";
+            $("#output-details").append(appendText);
+
+            $("#rollno").val("");
+            $("#name").val("");
+            $("#marks").val("");
+        }
+    })
+});
+
