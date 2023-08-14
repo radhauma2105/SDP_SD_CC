@@ -1,0 +1,18 @@
+<html>
+   <head>
+    </head>
+    <body>
+        <script>
+let promise = new Promise(function (resolve, reject) {
+    resolve('EDUNETFOUNDATION');
+})
+promise
+    .then(function (successMessage) {
+        //success handler function is invoked
+        console.log(successMessage);
+    }, function (errorMessage) {
+        console.log(errorMessage);
+    });
+</script>
+         </body>
+</html>
