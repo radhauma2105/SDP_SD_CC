@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+h1 {
+  text-shadow: 2px 2px;
+}
+p {
+  text-indent: 50px;
+}
+h4{
+  letter-spacing: 5px;
+}
+h6 {
+  line-height: 1.8;
+}
+h5{
+word-spacing: 30px;
+}
+h3{
+white-space: nowrap;
+}
+</style>
+</head>
+<body>
+<h1>Text-shadow effect!</h1>
+<p>In my younger and more vulnerable years my father gave me some advice that I've been turning over in my mind ever since. 'Whenever you feel like criticizing anyone,' he told me, 'just remember that all the people in this world haven't had the advantages that you've had.'</p>
+<h4>EDUNETFOUNDATION</h4>
+<h6>TECHSAKSHAM</h6>
+<h5>TECHSAKSHAM TECHSAKSHAM TECHSAKSHAM TECHSAKSHAM</h5>
+<h3>
+This is some text that will not wrap.
+This is some text that will not wrap.
+This is some text that will not wrap.
+This is some text that will not wrap.
+This is some text that will not wrap.
+This is some text that will not wrap.
+This is some text that will not wrap.
+This is some text that will not wrap.
+This is some text that will not wrap.
+</h3>
+</body>
+</html>
