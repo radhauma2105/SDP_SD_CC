@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+div.a {
+  width: 150px;
+  height: 80px;
+  background-color: orange;
+  border:10px dotted green;
+  transform: rotate(20deg);
+}
+div.b {
+  width: 150px;
+  height: 80px;
+  background-color: orange;
+   border:10px groove green;
+  transform: skewY(20deg);
+}
+div.c {
+  width: 150px;
+  height: 80px;
+  background-color: orange;
+    border:10px ridge green;
+  transform: scaleY(1.5);
+}
+</style>
+</head>
+<body>
+<h2>transform: rotate(20deg):</h2>
+<div class="a">EDUNETFOUNDATION!</div>
+<br>
+<h2>transform: skewY(20deg):</h2>
+<div class="b">TECHSAKSHAM!</div>
+<br>
+<h2>transform: scaleY(1.5):</h2>
+<div class="c">FULLSTACKDEVELOPMENY!</div>
+</body>
+</html>
