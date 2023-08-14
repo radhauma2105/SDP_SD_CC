@@ -1,0 +1,26 @@
+<!Doctype html>
+<html>
+<head>
+<style>
+ h1{
+    background-color:aqua;
+ }
+ h2{
+  background-color: #aeaeae;
+ }
+ h3{
+   background-color:rgba(255,100,100,0.4);
+ }
+ h4{
+    background-color:hsla(240,50%,50%,0.5);
+
+ }
+</style>
+</head>
+<body>
+<h1>CSS COLOR NAME</h1>
+<h2>CSS HEX CODE</h2>
+<h3>RGB COLOR</h3>
+<h4>HSL COLOR</h4>
+</body>
+</html>
