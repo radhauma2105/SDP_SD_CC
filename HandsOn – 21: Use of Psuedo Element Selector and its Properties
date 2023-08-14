@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+::selection {
+  color: red;
+  background: yellow;
+}
+p::first-letter {
+  color: #ff0000;
+  font-size: xx-large;
+}
+h1::before {
+  content: url(https://media.tenor.com/Wq-MvpjAJksAAAAM/emojilaugh-emoji.gif);
+}
+h6::first-line {
+  color: #ff0000;
+  font-variant: small-caps;
+}
+h3::after {
+  content: url(https://media.tenor.com/Wq-MvpjAJksAAAAM/emojilaugh-emoji.gif);
+}
+</style>
+</head>
+<body>
+
+<h1>Select some text on this page:</h1>
+
+<p>This is a paragraph.</p>
+<h6>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</h6>
+<h3>Select some text on this page:</h3>
+</body>
+</html>
