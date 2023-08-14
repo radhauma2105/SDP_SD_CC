@@ -1,0 +1,25 @@
+<!Doctype html>
+<html>
+<head>
+<style>
+ h1{
+    color:blue;
+ }
+ h2{
+    color:#000;
+    }
+ h3{
+    color:rgb(255,100,100);
+ }
+ h4{
+    color:hsl(240,50%,50%);
+    }
+</style>
+</head>
+<body>
+<h1>CSS COLOR NAME</h1>
+<h2>CSS HEX CODE</h2>
+<h3>RGB COLOR</h3>
+<h4>HSL COLOR</h4>
+</body>
+</html>
