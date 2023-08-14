@@ -1,0 +1,12 @@
+<!Doctype html>
+<head>
+</head>
+<body>
+   <script>
+        var a=10;
+        console.log(10);
+    
+    </script>
+</body>
+</html>
+
