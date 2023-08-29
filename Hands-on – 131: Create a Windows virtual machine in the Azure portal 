@@ -1,0 +1,32 @@
+step 1:  
+
+Sign in to the Azure portal at https://portal.azure.com 
+
+Step 2: Create virtual machine 
+
+Type virtual machines in the search. 
+
+Under Services, select Virtual machines. 
+
+In the Virtual machines page, select Add then Virtual machine. 
+
+In the Basics tab, under Project details, make sure the correct subscription is selected and then choose to Create new resource group. Type myResourceGroup for the name. 
+
+Under Instance details, type myVM for the Virtual machine name and choose East US for your Region. Choose Windows Server 2019 Datacenter for the Image and Standard_DS1_v2 for the Size. Leave the other defaults.
+Under Administrator account, provide a username, such as azureuser and a password. The password must be at least 12 characters long and meet the defined complexity requirements. 
+
+ Under Inbound port rules, choose Allow selected ports and then select RDP (3389) and HTTP (80) from the drop-down. 
+
+Leave the remaining defaults and then select the Review + create button at the bottom of the page. 
+
+ After validation runs, select the Create button at the bottom of the page. 
+
+After deployment is complete, select Go to resource. 
+Step 3: Connect to virtual machine 
+
+On the overview page for your virtual machine, select the Connect button then select RDP. 
+Step 4: Clean up resources 
+
+When no longer needed, you can delete the resource group, virtual machine, and all related resources. 
+
+Go to the resource group for the virtual machine, then select Delete resource group. Confirm the name of the resource group to finish deleting the resources. 
