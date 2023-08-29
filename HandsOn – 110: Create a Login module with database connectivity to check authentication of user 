@@ -1,0 +1,325 @@
+LoginController.java 
+
+package com.controller; 
+
+import com.dao.Validate; 
+
+import java.io.IOException; 
+
+import java.io.PrintWriter; 
+
+import javax.servlet.RequestDispatcher; 
+
+import javax.servlet.ServletException; 
+
+import javax.servlet.annotation.WebServlet; 
+
+import javax.servlet.http.HttpServlet; 
+
+import javax.servlet.http.HttpServletRequest; 
+
+import javax.servlet.http.HttpServletResponse; 
+
+/** 
+
+ * Servlet implementation class LoginController 
+
+ */ 
+
+//@WebServlet("/LoginController") 
+
+public class LoginController extends HttpServlet { 
+
+private static final long serialVersionUID = 1L; 
+
+           /** 
+
+     * @see HttpServlet#HttpServlet() 
+
+     */ 
+
+    public LoginController() { 
+
+        super(); 
+
+        // TODO Auto-generated constructor stub 
+
+    } 
+
+/** 
+
+ * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response) 
+
+ */ 
+
+protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
+
+// TODO Auto-generated method stub 
+
+response.setContentType("text/html;charset=UTF-8"); 
+
+        PrintWriter out = response.getWriter(); 
+
+               String email = request.getParameter("email"); 
+
+        String pass = request.getParameter("pass"); 
+
+         if(Validate.checkUser(email, pass)) 
+
+        { 
+
+            RequestDispatcher rs = request.getRequestDispatcher("Welcome"); 
+
+            rs.forward(request, response); 
+
+        } 
+
+        else 
+
+        { 
+
+           out.println("Username or Password incorrect"); 
+
+           RequestDispatcher rs = request.getRequestDispatcher("Login.html"); 
+
+           rs.include(request, response); 
+
+        } 
+
+    }   
+
+} 
+
+Welcome.java 
+
+package com.controller; 
+
+ 
+
+import java.io.IOException; 
+
+import java.io.PrintWriter; 
+
+ 
+
+import javax.servlet.ServletException; 
+
+import javax.servlet.annotation.WebServlet; 
+
+import javax.servlet.http.HttpServlet; 
+
+import javax.servlet.http.HttpServletRequest; 
+
+import javax.servlet.http.HttpServletResponse; 
+
+ 
+
+/** 
+
+ * Servlet implementation class Welcome 
+
+ */ 
+
+//@WebServlet("/Welcome") 
+
+public class Welcome extends HttpServlet { 
+
+private static final long serialVersionUID = 1L; 
+
+        
+
+    /** 
+
+     * @see HttpServlet#HttpServlet() 
+
+     */ 
+
+    public Welcome() { 
+
+        super(); 
+
+        // TODO Auto-generated constructor stub 
+
+    } 
+
+ 
+
+/** 
+
+ * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response) 
+
+ */ 
+
+protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
+
+// TODO Auto-generated method stub 
+
+response.getWriter().append("Served at: ").append(request.getContextPath()); 
+
+} 
+
+ 
+
+/** 
+
+ * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response) 
+
+ */ 
+
+protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
+
+// TODO Auto-generated method stub 
+
+doGet(request, response); 
+
+response.setContentType("text/html;charset=UTF-8"); 
+
+        PrintWriter out = response.getWriter(); 
+
+        out.println("Welcome user"); 
+
+} 
+
+ 
+
+} 
+
+Validate.java 
+
+package com.dao; 
+
+ 
+
+import java.sql.*; 
+
+ 
+
+public class Validate { 
+
+    public static boolean checkUser(String email,String pass)  
+
+    { 
+
+        boolean st =false; 
+
+        try { 
+
+ 
+
+            //loading drivers for mysql 
+
+            Class.forName("com.mysql.jdbc.Driver"); 
+
+ 
+
+            //creating connection with the database 
+
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3308/authen","root","Um@21may"); 
+
+            PreparedStatement ps = con.prepareStatement("select * from authentication where email=? and pass=?"); 
+
+            ps.setString(1, email); 
+
+            ps.setString(2, pass); 
+
+            ResultSet rs =ps.executeQuery(); 
+
+            st = rs.next(); 
+
+ 
+
+        } 
+
+        catch(Exception e) { 
+
+            e.printStackTrace(); 
+
+        } 
+
+        return st;                  
+
+    }    
+
+} 
+
+Login.html 
+
+<!DOCTYPE html> 
+
+<html> 
+
+    <head> 
+
+        <title>login form</title> 
+
+    </head> 
+
+    <body> 
+
+        <form method="post" action="LoginController"> 
+
+        Email ID:<input type="text" name="email" /><br/> 
+
+        Password:<input type="text" name="pass" /><br/> 
+
+        <input type="submit" value="login" /> 
+
+        </form> 
+
+    </body> 
+
+</html> 
+
+Web.xml: 
+
+<?xml version="1.0" encoding="UTF-8"?> 
+
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+
+xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+
+xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" 
+
+id="WebApp_ID" version="4.0"> 
+
+<display-name>LoginAuthentication</display-name> 
+
+<servlet> 
+
+<servlet-name>LoginController</servlet-name> 
+
+<servlet-class>com.controller.LoginController</servlet-class> 
+
+</servlet> 
+
+<servlet> 
+
+<servlet-name>Welcome</servlet-name> 
+
+<servlet-class>com.controller.Welcome</servlet-class> 
+
+</servlet> 
+
+<servlet-mapping> 
+
+<servlet-name>LoginController</servlet-name> 
+
+<url-pattern>/LoginController</url-pattern> 
+
+</servlet-mapping> 
+
+<servlet-mapping> 
+
+<servlet-name>Welcome</servlet-name> 
+
+<url-pattern>/Welcome</url-pattern> 
+
+</servlet-mapping> 
+
+<welcome-file-list> 
+
+<welcome-file>Login.html</welcome-file> 
+
+</welcome-file-list> 
+
+</web-app> 
