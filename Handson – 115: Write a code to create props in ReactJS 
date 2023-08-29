@@ -1,0 +1,45 @@
+Index.js 
+
+import React from 'react'; 
+
+import ReactDOM from 'react-dom/client'; 
+
+ 
+
+// sample component to illustrate props 
+
+class DemoComponent extends React.Component{ 
+
+  render(){ 
+
+    return( 
+
+        <div> 
+
+          {/*accessing information from props */} 
+
+          <h2>Hello {this.props.user}</h2> 
+
+          <h3>Welcome to our Full Stack Software Development Program</h3> 
+
+        </div> 
+
+      ); 
+
+  } 
+
+} 
+
+ 
+
+const root = ReactDOM.createRoot(document.getElementById("root")); 
+
+root.render( 
+
+<React.StrictMode> 
+
+  <DemoComponent /> 
+
+</React.StrictMode> 
+
+); 
