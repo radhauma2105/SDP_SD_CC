@@ -1,0 +1,27 @@
+App.js: 
+
+import React, { Component } from 'react'; 
+
+ 
+
+function App() { 
+
+  const text = 'Hello World'; 
+
+   
+
+  return ( 
+
+    <div className="App"> 
+
+      <p> {text}</p> 
+
+    </div> 
+
+  ); 
+
+} 
+
+ 
+
+export default App; 
