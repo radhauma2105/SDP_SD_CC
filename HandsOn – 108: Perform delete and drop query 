@@ -1,0 +1,3 @@
+ALTER TABLE Test DROP COLUMN Branch;   
+
+DELETE FROM Employees WHERE emp_id=107;   
