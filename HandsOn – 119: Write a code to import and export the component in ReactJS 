@@ -1,0 +1,57 @@
+App.js: 
+
+import Gallery from './Gallery.js'; 
+
+ 
+
+export default function App() { 
+
+  return ( 
+
+    <Gallery /> 
+
+  ); 
+
+} 
+
+ 
+
+Gallery.js: 
+
+function Profile() { 
+
+    return ( 
+
+      <img 
+
+        src="https://media.licdn.com/dms/image/C4E0BAQEA0V9yzn_dPg/company-logo_200_200/0/1646199475329?e=2147483647&v=beta&t=Yr5ynS2NRkWN0tMSn_j1_I-sgTP_gJTEPEwhqwzS0GQ" 
+
+        alt="EDUNETFOUNDATION" 
+
+      /> 
+
+    ); 
+
+  } 
+
+   
+
+  export default function Gallery() { 
+
+    return ( 
+
+      <section> 
+
+        <h1>Amazing FOUNDATION</h1> 
+
+        <Profile /> 
+
+        <Profile /> 
+
+        <Profile /> 
+
+      </section> 
+
+    ); 
+
+  } 
