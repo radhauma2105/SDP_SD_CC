@@ -1,0 +1,213 @@
+Appconfig.java 
+
+package com.studytonight; 
+
+import org.springframework.beans.factory.annotation.Autowired; 
+
+import org.springframework.context.ApplicationContext; 
+
+import org.springframework.context.annotation.Bean; 
+
+import org.springframework.context.annotation.ComponentScan; 
+
+import org.springframework.context.annotation.Configuration; 
+
+import org.springframework.web.servlet.ViewResolver; 
+
+import org.springframework.web.servlet.config.annotation.EnableWebMvc; 
+
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer; 
+
+import org.springframework.web.servlet.view.InternalResourceViewResolver; 
+
+@EnableWebMvc 
+
+@Configuration 
+
+@ComponentScan("com.studytonight.controllers") 
+
+public class AppConfig implements WebMvcConfigurer{ 
+
+@Autowired 
+
+ApplicationContext applicationContext; 
+
+ 
+
+@Bean 
+
+public ViewResolver viewResolver() { 
+
+InternalResourceViewResolver ivr = new InternalResourceViewResolver(); 
+
+ivr.setPrefix("/WEB-INF/views/"); 
+
+ivr.setSuffix(".jsp"); 
+
+ivr.setOrder(0); 
+
+return ivr; 
+
+} 
+
+} 
+
+MainApp.java 
+
+package com.studytonight; 
+
+import javax.servlet.ServletContext; 
+
+import javax.servlet.ServletException; 
+
+import javax.servlet.ServletRegistration; 
+
+import org.springframework.web.WebApplicationInitializer; 
+
+import org.springframework.web.context.support.AnnotationConfigWebApplicationContext; 
+
+import org.springframework.web.servlet.DispatcherServlet; 
+
+public class MainApp implements WebApplicationInitializer { 
+
+@Override 
+
+public void onStartup(ServletContext servletContext) throws ServletException {  
+
+AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext(); 
+
+context.register(AppConfig.class); 
+
+context.setServletContext(servletContext); 
+
+ServletRegistration.Dynamic servlet = servletContext.addServlet("dispatcher", new DispatcherServlet(context)); 
+
+servlet.setLoadOnStartup(1); 
+
+servlet.addMapping("/"); 
+
+context.close();	 
+
+} 
+
+} 
+
+HomeController.java 
+
+package com.studytonight.controllers; 
+
+import org.springframework.web.bind.annotation.GetMapping; 
+
+import org.springframework.web.bind.annotation.PostMapping; 
+
+import org.springframework.web.bind.annotation.RequestParam; 
+
+import org.springframework.web.bind.annotation.RestController; 
+
+import com.studytonight.models.User; 
+
+@RestController 
+
+public class HomeController { 
+
+@GetMapping("/user") 
+
+public User getUser(@RequestParam(value = "name", defaultValue = "david") String name, 
+
+@RequestParam(value = "lastName", defaultValue = "mark") String lastName, 
+
+@RequestParam(value = "email", defaultValue = "david@gmail.com") String email) {		 
+
+User user = new User(); 
+
+user.setName(name); 
+
+user.setLastName(lastName); 
+
+user.setEmail(email); 
+
+return user; 
+
+} 
+
+@PostMapping("/user") 
+
+public User postUser(@RequestBody User user) { 
+
+return user; 
+
+} 
+
+} 
+
+pom.xml file: 
+
+<dependency> 
+
+    <groupId>com.fasterxml.jackson.core</groupId> 
+
+<artifactId>jackson-databind</artifactId> 
+
+<version>2.10.0.pr3</version> 
+
+</dependency> 
+
+User.java: 
+
+package com.studytonight.models; 
+
+import javax.validation.constraints.Email; 
+
+import javax.validation.constraints.NotEmpty; 
+
+public class User { 
+
+@NotEmpty(message = "Name can not empty") 
+
+String name; 
+
+String lastName; 
+
+@NotEmpty(message = "Email can not empty") 
+
+@Email 
+
+String email; 
+
+public String getEmail() { 
+
+return email; 
+
+} 
+
+public void setEmail(String email) { 
+
+this.email = email; 
+
+} 
+
+public String getName() { 
+
+return name; 
+
+} 
+
+public void setName(String name) { 
+
+this.name = name; 
+
+} 
+
+public String getLastName() { 
+
+return lastName; 
+
+} 
+
+public void setLastName(String lastName) { 
+
+this.lastName = lastName; 
+
+} 
+
+} 
