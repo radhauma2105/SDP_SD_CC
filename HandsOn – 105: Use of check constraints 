@@ -1,0 +1,5 @@
+CREATE TABLE employee(ID int NOT NULL,Name varchar(45) NOT NULL,Age int CHECK (Age>=18));   
+
+INSERT INTO employee(Id, Name, Age) VALUES (1,'Robert', 28), (2, 'Joseph', 35), (3, 'Peter', 40);  
+
+INSERT INTO employee(Id, Name, Age) VALUES (1,'Robert', 15);    
