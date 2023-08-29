@@ -1,0 +1,313 @@
+App.js: 
+
+import { BrowserRouter, Link, Route, Switch } from 'react-router-dom' 
+
+// pages 
+
+import Home from './pages/Home' 
+
+import About from './pages/About' 
+
+import Products from './pages/Products' 
+
+import ProductDetails from './pages/ProductDetails' 
+
+function App() { 
+
+  return ( 
+
+    <div className="App"> 
+
+      <BrowserRouter> 
+
+        <nav> 
+
+          <h1>UMAMAHESWARI PORTFOLIO</h1> 
+
+          <Link to="/">Home</Link> 
+
+          <Link to="/about">About</Link> 
+
+          <Link to="/products">Projects</Link> 
+
+        </nav> 
+
+        <Switch> 
+
+          <Route exact path="/" component={Home} /> 
+
+          <Route path="/about"> 
+
+            <About /> 
+
+          </Route> 
+
+          <Route path="/products/:id"> 
+
+            <ProductDetails /> 
+
+          </Route> 
+
+          <Route path="/products"> 
+
+            <Products /> 
+
+          </Route> 
+
+        </Switch> 
+
+      </BrowserRouter> 
+
+    </div> 
+
+  ) 
+
+} 
+
+export default App 
+
+ 
+
+pages/About.js: 
+
+import { Route } from 'react-router-dom' 
+
+// nested routes 
+
+import Offers from "./Offers" 
+
+export default function About() { 
+
+  return ( 
+
+    <div className="content"> 
+
+      <h2>About Us</h2> 
+
+      <p>Optimised over 100 blog posts to increase website traffic by 10% and increase revenue over eight months. Experience in writing training documentation for new hires in the digital marketing department.'</p> 
+
+    <p>'Seeking more experience in mentoring and training new marketers and continuing to develop strategies to grow both established and emerging companies.'</p> 
+
+      <Route path="/about/offers"> 
+
+        <Offers /> 
+
+      </Route> 
+
+    </div> 
+
+  ) 
+
+} 
+
+ 
+
+Pages/Home.js: 
+
+export default function Home() { 
+
+    return ( 
+
+      <div className="content"> 
+
+        <h1>Objective</h1> 
+
+        <p>Secure a responsible career opportunity to fully utilize my training and skills, while making a significant contribution to the success of the company.</p> 
+
+        <img src="https://img.freepik.com/free-photo/mand-holding-cup_1258-340.jpg" alt="site banner" /> 
+
+        <p>Seeking an entry-level position to begin my career in a high-level professional environment.</p> 
+
+      </div> 
+
+    ) 
+
+  } 
+
+ 
+
+Pages/Offers.js: 
+
+import { useState } from "react" 
+
+export default function Offers() { 
+
+  const [items] = useState([ 
+
+    { title: 'Ninja Hoodie', price: 21.99 }, 
+
+    { title: 'Ninja Sneakers', price: 34.99 }, 
+
+    { title: 'Ninja Tee', price: 12.99 } 
+
+  ]) 
+
+  return ( 
+
+    <div> 
+
+      <h3>Latest Offers</h3> 
+
+      <div className="offers"> 
+
+        {items.map(item => ( 
+
+          <div key={item.title}> 
+
+            <img src="https://via.placeholder.com/350x200" alt="product" /> 
+
+            <h4>{item.title}</h4> 
+
+            <p>£{item.price}</p> 
+
+          </div> 
+
+        ))} 
+
+      </div> 
+
+    </div> 
+
+  ) 
+
+} 
+
+ 
+
+Pages/ProductDetails.js: 
+
+import {useParams, useRouteMatch, Route } from 'react-router-dom'; 
+
+ 
+
+// nested routes 
+
+import Offers from "./Offers" 
+
+ 
+
+export default function ProductDetails() { 
+
+  const { id } = useParams() 
+
+  const { path } = useRouteMatch() 
+
+ 
+
+  return ( 
+
+    <div className="content"> 
+
+      <div className="product"> 
+
+        <div className="image"> 
+
+          <img src="https://via.placeholder.com/520x460" alt="" /> 
+
+        </div> 
+
+        <div className="details"> 
+
+          <h2>Product - {id}</h2> 
+
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos eaque repudiandae itaque dolorem nihil, voluptas corporis tempora provident optio harum modi inventore esse nostrum exercitationem magnam tempore odio laborum velit! Lorem ipsum dolor sit amet consectetur adipisicing elit.</p> 
+
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi voluptate neque harum. Quam facere accusamus exercitationem in quidem mollitia eligendi porro eos voluptates iure incidunt, laudantium sed harum omnis quasi?</p> 
+
+        </div> 
+
+      </div> 
+
+ 
+
+      <Route path={`${path}/offers`}> 
+
+        <Offers /> 
+
+      </Route> 
+
+    </div> 
+
+  ) 
+
+} 
+
+ 
+
+Pages/Products.js: 
+
+import { Link } from "react-router-dom" 
+
+ 
+
+export default function Products() { 
+
+  return ( 
+
+    <div className="content"> 
+
+      <h3>FRONT END PROJECTS</h3> 
+
+      <div className="products"> 
+
+        {[0,1,2,3].map(p => ( 
+
+          <div key={p}> 
+
+            <Link to={`/products/${p}`}> 
+
+              <img src="https://via.placeholder.com/250x150" alt="product" /> 
+
+            </Link> 
+
+          </div> 
+
+        ))} 
+
+      </div> 
+
+      <h3>BACKEND PROJECTS</h3> 
+
+      <div className="products"> 
+
+        {[4,5,6,7].map(p => ( 
+
+          <div key={p}> 
+
+            <Link to={`/products/${p}`}> 
+
+              <img src="https://via.placeholder.com/250x150" alt="product" /> 
+
+            </Link> 
+
+          </div> 
+
+        ))} 
+
+      </div> 
+
+      <h3>FULLSTACK WEB DEVELOPMENT PROJECTS</h3> 
+
+      <div className="products"> 
+
+        {[8,9,10,11].map(p => ( 
+
+          <div key={p}> 
+
+            <Link to={`/products/${p}`}> 
+
+              <img src="https://via.placeholder.com/250x150" alt="product" /> 
+
+            </Link> 
+
+          </div> 
+
+        ))} 
+
+      </div> 
+
+    </div> 
+
+  ) 
+
+} 
