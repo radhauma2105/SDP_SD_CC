@@ -1,0 +1,13 @@
+SELECT officer_name   
+
+FROM officers   
+
+WHERE address LIKE 'Luck%';   
+
+SELECT CASE 1 WHEN 1 THEN 'one' WHEN 2 THEN 'two' ELSE 'more' END; 
+
+SELECT CASE 2 WHEN 1 THEN 'one' WHEN 2 THEN 'two' ELSE 'more' END; 
+
+SELECT CASE 3 WHEN 1 THEN 'one' WHEN 2 THEN 'two' ELSE 'more' END; 
+
+select name as "employee name" from employee; 
