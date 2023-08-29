@@ -1,0 +1,63 @@
+Index.html 
+
+<HTML> 
+
+<BODY> 
+
+<CENTER> 
+
+<FORM NAME=”Form1″ METHOD=”post” ACTION=”https://ecomputernotes.com:8080/ServletGetExample”> 
+
+<B>Login ID</B> <INPUT TYPE=”text” NAME=”loginid” SIZE=”30″> 
+
+<P> 
+
+<B>Password</B> <INPUT TYPE=”password” NAME=”password” SIZE=”30″> 
+
+</P> 
+
+<P> 
+
+<INPUT TYPE=submit VALUE=”Submit”.> 
+
+</P> 
+
+</BODY> 
+
+</HTML> 
+
+ServletPostExample.java 
+
+import java.io.*; 
+
+import java.util.*; 
+
+import javax.servlet.*; 
+
+public class ServletPostExample extends HttpServlet 
+
+{ 
+
+    public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException 
+
+   { 
+
+      PrintWriter out = res.getWriter(); 
+
+      String login= req.getParameter(“loginid”); 
+
+      String password= req.getParameter(“password”); 
+
+      out.println(“Your login ID is: “); 
+
+      out.println(login); 
+
+      out.println(“Your password is: “); 
+
+      out.println(password); 
+
+      out.close(); 
+
+   } 
+
+} 
