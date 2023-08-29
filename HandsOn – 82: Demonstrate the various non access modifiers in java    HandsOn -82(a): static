@@ -1,0 +1,25 @@
+import java.io.*; 
+
+// static variable 
+
+class static_gfg { 
+
+static String s = "EDUNET FOUNDATION TSP"; 
+
+} 
+
+class GFG { 
+
+public static void main(String[] args) 
+
+{ 
+
+// No object required 
+
+System.out.println( 
+
+static_gfg.s); 
+
+} 
+
+} 
