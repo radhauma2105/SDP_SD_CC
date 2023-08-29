@@ -1,0 +1,1 @@
+alter table people add location varchar(40) not null; 
