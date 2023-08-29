@@ -1,0 +1,25 @@
+interface MathOperation {  
+
+    int operate(int a, int b);  
+
+}  
+
+ public class Lambda{  
+
+    public static void main(String[] args) {  
+
+        MathOperation addition = (a, b) -> a + b;  
+
+        MathOperation subtraction = (a, b) -> a - b;  
+
+         int result1 = addition.operate(5, 3);  
+
+        int result2 = subtraction.operate(10, 4);  
+
+         System.out.println("Addition Result: " + result1);  
+
+        System.out.println("Subtraction Result: " + result2);  
+
+    }  
+
+}  
