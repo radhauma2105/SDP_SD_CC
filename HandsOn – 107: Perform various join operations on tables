@@ -1,0 +1,7 @@
+SELECT officers.officer_name, officers.address, students.course_name   
+
+FROM officers    
+
+INNER JOIN students   
+
+ON officers.officer_id = students.student_id;    
