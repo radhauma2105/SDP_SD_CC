@@ -1,0 +1,59 @@
+App.js: 
+
+const rawHTML = ` 
+
+<div> 
+
+  <p>EDUNETFOUNDATION<strong>CERTIFICATE</strong> STUDENT SHARED <strong>IN LINKEDIN</strong></p> 
+
+  <p><i>This is something special</i></p> 
+
+  <div> 
+
+    <img src="https://media.licdn.com/dms/image/C5622AQFFbGmnClS6CA/feedshare-shrink_800/0/1666966887049?e=2147483647&v=beta&t=zBug4efOgaXK6-rmA2kT8OBKvKa6BO2qE79qNFynq3Q"/> 
+
+  </div> 
+
+  <h1>EDUNETFOUNDATION</h1> 
+
+  <h2>TECHSAKSHAMPROGRAM</h2> 
+
+  <h3>H3</h3> 
+
+  <h4>Just Another Heading</h4> 
+
+</div> 
+
+`; 
+
+ 
+
+const App = () => { 
+
+  return ( 
+
+    <div style={container}> 
+
+      <div dangerouslySetInnerHTML={{ __html: rawHTML }}></div> 
+
+    </div> 
+
+  ); 
+
+}; 
+
+ 
+
+export default App; 
+
+ 
+
+// Styling 
+
+const container = { 
+
+  width: 500, 
+
+  margin: '50px auto' 
+
+} 
