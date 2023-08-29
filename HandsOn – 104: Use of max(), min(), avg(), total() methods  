@@ -1,0 +1,7 @@
+select max(age) as "maximum Age" from people; 
+
+select min(age) as "minimum Age" from people; 
+
+select avg(salary) as "Avg_salary" from people; 
+
+select sum(salary) as "Totalsum" from people; 
