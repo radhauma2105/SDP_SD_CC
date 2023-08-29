@@ -1,0 +1,27 @@
+import java.io.*; 
+
+class GFG { 
+
+public static void main(String[] args) { 
+
+// call method pass value to the parameter 
+
+// return value store in a str 
+
+String str = example("EDUNET FOUNDATION!"); 
+
+System.out.println(str); 
+
+} 
+
+// para is a parameter of type String inside 
+
+// method name method return String 
+
+public static String example(String para) { 
+
+return "Hello " + para; 
+
+} 
+
+} 
