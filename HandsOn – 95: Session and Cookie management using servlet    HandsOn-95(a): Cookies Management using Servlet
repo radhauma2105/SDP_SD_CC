@@ -1,0 +1,235 @@
+Index.html 
+
+<!DOCTYPE html> 
+
+<html> 
+
+<head> 
+
+<title>TODO supply a title</title> 
+
+<!-- css--> 
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+
+integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+
+crossorigin="anonymous"> 
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+
+<meta charset="UTF-8"> 
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+</head> 
+
+<body> 
+
+<form action="servlet1" method="POST"> 
+
+<div class="container-fluid "> 
+
+<div class="jumbotron"> 
+
+<div class="container col-sm-4"> 
+
+<h2>Enter your institute's name</h2> 
+
+<input type="text" name="name" style="font-size:30px;"> 
+
+<br> 
+
+<br> 
+
+<!-- button to redirect to servlet1 --> 
+
+<button type="submit" style="font-size:20px;" class="center"> 
+
+Go ! 
+
+</button> 
+
+<br><br> 
+
+</div> 
+
+</div> 
+
+</div> 
+
+</form> 
+
+</body> 
+
+</html> 
+
+Servlet1.java: 
+
+import jakarta.servlet.*; 
+
+import jakarta.servlet.http.*; 
+
+import java.io.IOException; 
+
+import java.io.PrintWriter; 
+
+public class Servlet1 extends HttpServlet { 
+
+protected void 
+
+processRequest(HttpServletRequest request, 
+
+HttpServletResponse response) 
+
+throws ServletException, IOException 
+
+{ 
+
+response.setContentType("text/html;charset=UTF-8"); 
+
+try (PrintWriter out = response.getWriter()) { 
+
+out.println("<!DOCTYPE html>"); 
+
+out.println("<html>"); 
+
+out.println("<head>"); 
+
+out.println("<title>Servlet Servlet1</title>"); 
+
+out.println("</head>"); 
+
+out.println("<body>"); 
+
+// Creating a string to store the name 
+
+String name = request.getParameter("name"); 
+
+out.println("<h1> Hello, welcome to " + name 
+
++ " </h1>"); 
+
+out.println( 
+
+"<h1><a href =\"servlet2\">Go to Servlet2</a></h1>"); 
+
+// Creating a cookie 
+
+Cookie c = new Cookie("user_name", name); 
+
+response.addCookie(c); 
+
+out.println("</body>"); 
+
+out.println("</html>"); 
+
+} 
+
+} 
+
+} 
+
+Servlet2.java: 
+
+import jakarta.servlet.*; 
+
+import jakarta.servlet.http.*; 
+
+import java.io.IOException; 
+
+import java.io.PrintWriter; 
+
+public class Servlet2 extends HttpServlet { 
+
+protected void 
+
+processRequest(HttpServletRequest request, 
+
+HttpServletResponse response) 
+
+throws ServletException, IOException 
+
+{ 
+
+response.setContentType("text/html;charset=UTF-8"); 
+
+try (PrintWriter out = response.getWriter()) { 
+
+out.println("<!DOCTYPE html>"); 
+
+out.println("<html>"); 
+
+out.println("<head>"); 
+
+out.println("<title>Servlet Servlet2</title>"); 
+
+out.println("</head>"); 
+
+out.println("<body>"); 
+
+// Fetching cookies(if found more than one) 
+
+// Array of Cookies 
+
+Cookie[] cookies = request.getCookies(); 
+
+boolean f = false; 
+
+String name = ""; 
+
+if (cookies == null) { 
+
+out.println( 
+
+"<h1>You are new user, go to home page and submit your institute's name"); 
+
+return; 
+
+} 
+
+else { 
+
+for (Cookie c : cookies) { 
+
+String tname = c.getName(); 
+
+if (tname.equals("user_name")) { 
+
+f = true; 
+
+name = c.getValue(); 
+
+} 
+
+} 
+
+} 
+
+if (f) { 
+
+out.println("<h1> Hello, welcome back " 
+
++ name + " </h1>"); 
+
+out.println("<h2>Thank you!!</h2>"); 
+
+} 
+
+else { 
+
+out.println( 
+
+"<h1>You are new user, go to home page and submit your institute's name"); 
+
+} 
+
+out.println("</body>"); 
+
+out.println("</html>"); 
+
+} 
+
+} 
+
+} 
