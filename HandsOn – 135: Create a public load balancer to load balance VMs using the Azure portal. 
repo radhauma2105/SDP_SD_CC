@@ -1,0 +1,588 @@
+Diagram of resources deployed for a standard public load balancer. 
+
+Step 1: Create the virtual network 
+
+In this section, you'll create a virtual network, subnet, and Azure Bastion host. The virtual network and subnet contains the load balancer and virtual machines. The bastion host is used to securely manage the virtual machines and install IIS to test the load balancer. 
+
+In the search box at the top of the portal, enter Virtual network. Select Virtual Networks in the search results. 
+
+In Virtual networks, select + Create. 
+
+In Create virtual network, enter or select the following information in the Basics tab: 
+
+ 
+
+ 
+
+Setting 
+
+Value 
+
+Project Details 
+
+ 
+
+Subscription 
+
+Select your Azure subscription 
+
+Resource Group 
+
+Select Createnew.   
+In Name enter CreatePubLBQS-rg. 
+Select OK. 
+
+Instance details 
+
+ 
+
+Name 
+
+Enter myVNet 
+
+Region 
+
+Select East US 
+
+Select the Security tab. 
+
+Under Azure Bastion, select Enable Azure Bastion. Enter this information: 
+
+Setting 
+
+Value 
+
+Azure Bastion name 
+
+Enter myBastionHost 
+
+ Important 
+
+Hourly pricing starts from the moment Bastion is deployed, regardless of outbound data usage. For more information, see Pricing and SKUs. If you're deploying Bastion as part of a tutorial or test, we recommend that you delete this resource once you've finished using it. 
+
+Select the IP addresses tab or select the Next: IP addresses button at the bottom of the page. 
+
+In the IP addresses tab, select Add an IP address space, and enter this information: 
+
+Setting 
+
+Value 
+
+Starting Address 
+
+Enter 10.1.0.0 
+
+Address space size 
+
+Select /16 
+
+Select Add. 
+
+Select Add a subnet, enter this information: 
+
+Setting 
+
+Value 
+
+Subnet name 
+
+Enter myBackendSubnet 
+
+Starting address 
+
+Enter 10.1.0.0 
+
+Subnet size 
+
+Select /24 
+
+ 
+
+Select Add. 
+
+Select Add a subnet, enter this information: 
+
+Setting 
+
+Value 
+
+Subnet template 
+
+Azure Bastion 
+
+Starting address 
+
+Enter 10.1.1.0 
+
+Subnet size 
+
+Select /26 
+
+Select Add. 
+
+Select the Review + create tab or select the Review + create button. 
+
+Select Create. 
+
+Step 2: Create a Load Balancer 
+
+In the search box at the top of the portal, enter Load balancer. Select Load balancers in the search results. 
+
+In the Load balancer page, select + Create. 
+
+In the Basics tab of the Create load balancer page, enter or select the following information: 
+
+Setting 
+
+Value 
+
+Project details 
+
+ 
+
+Subscription 
+
+Select your subscription. 
+
+Resource group 
+
+Select CreatePubLBQS-rg. 
+
+Instance details 
+
+ 
+
+Name 
+
+Enter myLoadBalancer 
+
+Region 
+
+Select East US. 
+
+SKU 
+
+Leave the default Standard. 
+
+Type 
+
+Select Public. 
+
+Tier 
+
+Leave the default Regional. 
+
+ 
+
+Select Next: Frontend IP configuration at the bottom of the page. 
+
+In Frontend IP configuration, select + Add a frontend IP configuration. 
+
+Enter myFrontend in Name. 
+
+Select IPv4 for the IP version. 
+
+Select IP address for the IP type. 
+
+Select Create new in Public IP address. 
+
+In Add a public IP address, enter myPublicIP for Name. 
+
+Select Zone-redundant in Availability zone. 
+
+Leave the default of Microsoft Network for Routing preference. 
+
+Select OK. 
+
+Select Add. 
+
+Select Next: Backend pools at the bottom of the page. 
+
+In the Backend pools tab, select + Add a backend pool. 
+
+Enter myBackendPool for Name in Add backend pool. 
+
+Select myVNet in Virtual network. 
+
+Select IP Address for Backend Pool Configuration. 
+
+Select Save. 
+
+Select Next: Inbound rules at the bottom of the page. 
+
+Under Load balancing rule in the Inbound rules tab, select + Add a load balancing rule. 
+
+In Add load balancing rule, enter or select the following information: 
+
+Setting 
+
+Value 
+
+Name 
+
+Enter myHTTPRule 
+
+IP Version 
+
+Select IPv4 or IPv6 depending on your requirements. 
+
+Frontend IP address 
+
+Select myFrontend (To be created). 
+
+Backend pool 
+
+Select myBackendPool. 
+
+Protocol 
+
+Select TCP. 
+
+Port 
+
+Enter 80. 
+
+Backend port 
+
+Enter 80. 
+
+Health probe 
+
+Select Createnew. 
+In Name,enter myHealthProbe. 
+Select TCP in Protocol. 
+Leave the rest of the defaults, and select OK. 
+
+Session persistence 
+
+Select None. 
+
+Idle timeout (minutes) 
+
+Enter or select 15. 
+
+TCP reset 
+
+Select Enabled. 
+
+Floating IP 
+
+Select Disabled. 
+
+Outbound source network address translation (SNAT) 
+
+Leave the default of (Recommended) Use outbound rules to provide backend pool members access to the internet. 
+
+Select Save. 
+
+Select the blue Review + create button at the bottom of the page. 
+
+Select Create. 
+
+Step 3: Create NAT gateway 
+In the search box at the top of the portal, enter NAT gateway. Select NAT gateways in the search results. 
+
+In NAT gateways, select + Create. 
+
+In Create network address translation (NAT) gateway, enter or select the following information: 
+
+Setting 
+
+Value 
+
+Project details 
+
+ 
+
+Subscription 
+
+Select your subscription. 
+
+Resource group 
+
+Select CreatePubLBQS-rg. 
+
+Instance details 
+
+ 
+
+NAT gateway name 
+
+Enter myNATgateway. 
+
+Region 
+
+Select East US. 
+
+Availability zone 
+
+Select None. 
+
+Idle timeout (minutes) 
+
+Enter 15. 
+
+Select the Outbound IP tab or select Next: Outbound IP at the bottom of the page. 
+
+In Outbound IP, select Create a new public IP address next to Public IP addresses. 
+
+Enter myNATgatewayIP in Name. 
+
+Select OK. 
+
+Select the Subnet tab or select the Next: Subnet button at the bottom of the page. 
+
+In Virtual network in the Subnet tab, select myVNet. 
+
+Select myBackendSubnet under Subnet name. 
+
+Select the blue Review + create button at the bottom of the page, or select the Review + create tab. 
+
+Select Create. 
+
+Create virtual machines 
+
+In this section, you'll create two VMs (myVM1 and myVM2) in two different zones (Zone 1, and Zone 2). 
+
+These VMs are added to the backend pool of the load balancer that was created earlier. 
+
+In the search box at the top of the portal, enter Virtual machine. Select Virtual machines in the search results. 
+
+In Virtual machines, select + Create > Azure virtual machine. 
+
+In Create a virtual machine, enter or select the following values in the Basics tab: 
+
+Setting 
+
+Value 
+
+Project Details 
+
+ 
+
+Subscription 
+
+Select your Azure subscription 
+
+Resource Group 
+
+Select CreatePubLBQS-rg 
+
+Instance details 
+
+ 
+
+Virtual machine name 
+
+Enter myVM1 
+
+Region 
+
+Select ((US) East US) 
+
+Availability Options 
+
+Select Availability zones 
+
+Availability zone 
+
+Select Zone 1 
+
+Security type 
+
+Select Standard. 
+
+Image 
+
+Select Windows Server 2022 Datacenter: Azure Edition - Gen2 
+
+Azure Spot instance 
+
+Leave the default of unchecked. 
+
+Size 
+
+Choose VM size or take default setting 
+
+Administrator account 
+
+ 
+
+Username 
+
+Enter a username 
+
+Password 
+
+Enter a password 
+
+Confirm password 
+
+Reenter password 
+
+Inbound port rules 
+
+ 
+
+Public inbound ports 
+
+Select None 
+
+Select the Networking tab, or select Next: Disks, then Next: Networking. 
+
+In the Networking tab, select or enter the following information: 
+
+Setting 
+
+Value 
+
+Network interface 
+
+ 
+
+Virtual network 
+
+Select myVNet 
+
+Subnet 
+
+Select myBackendSubnet 
+
+Public IP 
+
+Select None. 
+
+NIC network security group 
+
+Select Advanced 
+
+Configure network security group 
+
+Skip this setting until the rest of the settings are completed. Complete after Select a backend pool. 
+
+Delete NIC when VM is deleted 
+
+Leave the default of unselected. 
+
+Accelerated networking 
+
+Leave the default of selected. 
+
+Load balancing 
+
+ 
+
+Load balancing options 
+
+ 
+
+Load-balancing options 
+
+Select Azure load balancer 
+
+Select a load balancer 
+
+Select myLoadBalancer 
+
+Select a backend pool 
+
+Select myBackendPool 
+
+Configure network security group 
+
+Select Create new.  
+
+In the Create network security group, enter myNSG in Name. 
+Under Inbound rules, select +Add an inbound rule. 
+Under Service, select HTTP. 
+
+Under Priority, enter 100. 
+
+ 
+In Name, enter myNSGRule 
+
+ 
+Select Add 
+Select OK 
+
+Select Review + create. 
+
+Review the settings, and then select Create. 
+
+Follow the steps 1 through 7 to create another VM with the following values and all the other settings the same as myVM1: 
+
+Setting 
+
+VM 2 
+
+Name 
+
+myVM2 
+
+Availability zone 
+
+Zone 2 
+
+Network security group 
+
+Select the existing myNSG 
+
+ 
+
+Step 4: Install IIS 
+
+In the search box at the top of the portal, enter Virtual machine. Select Virtual machines in the search results. 
+
+Select myVM1. 
+
+On the Overview page, select Connect, then Bastion. 
+
+Enter the username and password entered during VM creation. 
+
+Select Connect. 
+
+On the server desktop, navigate to Start > Windows PowerShell > Windows PowerShell. 
+
+In the PowerShell Window, run the following commands to: 
+
+Install the IIS server 
+
+Remove the default iisstart.htm file 
+
+Add a new iisstart.htm file that displays the name of the VM: 
+
+PowerShellCopy 
+
+ # Install IIS server role 
+
+ Install-WindowsFeature -name Web-Server -IncludeManagementTools 
+
+ 
+
+ # Remove default htm file 
+
+ Remove-Item  C:\inetpub\wwwroot\iisstart.htm 
+
+ 
+
+ # Add a new htm file that displays server name 
+
+ Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername) 
+
+ 
+
+Close the Bastion session with myVM1. 
+
+Repeat steps 1 to 8 to install IIS and the updated iisstart.htm file on myVM2. 
+
+Step5: Test the load balancer 
+
+In the search box at the top of the page, enter Public IP. Select Public IP addresses in the search results. 
+
+In Public IP addresses, select myPublicIP. 
+
+Copy the item in IP address. Paste the public IP into the address bar of your browser. The custom VM page of the IIS Web server is displayed in the browser. 
+
+Step 6: Clean up resources 
+
+When no longer needed, delete the resource group, load balancer, and all related resources. To do so, select the resource group CreatePubLBQS-rg that contains the resources and then select Delete. 
