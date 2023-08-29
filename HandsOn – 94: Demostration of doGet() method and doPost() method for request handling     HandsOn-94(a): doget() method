@@ -1,0 +1,42 @@
+Index.html 
+
+<html> 
+   <head> 
+      <title> User Registration Form </title>     
+   </head> 
+   <body> 
+      <h2 align=”center”> User Registration Form </h2> 
+      <form method =”get” action =”/examples/servlet/DisplayUserInfo”> 
+       <p align=”center”> First Name :<input type=”text” name=”fname”/>                               
+          <p align=”center”> Last Name : <input type=”text” name=”lname”/> 
+          <p align=”center”> Email Id : <input type=”text” name=”emailid”/> 
+          <p align=”center”> <input type="submit" value="submit" /> 
+          <input type="reset" value="Reset" /> 
+          </p> 
+      </form> 
+   </body> 
+</html> 
+
+DisplayUserInfo. java 
+
+import java.io.*;  
+ import javax.servlet.*;  
+ import javax.servlet.http.*;  
+ public class DisplayUserInfo extends HttpServlet  
+ {  
+      public void doGet (HttpServletRequest request, HttpServletResponse  
+      response) throws ServletException, IOException  
+      {  
+           response.setContentType (“text/html”);  
+           PrintWriter out =response.getWriter ();     
+           String fname = request.getParameter (“fname”);  
+           String lname = request.getParameter (“lname”);  
+           String emailid = request.getParameter (“emailid”);  
+           out.println (“You have entered:<br>”)  
+           out.println (“First Name ……”+fname);   
+           out.println (“<br> Last Name ……”+lname);  
+           out.println (“<br> Emailid ……”+emailid);  
+           out.println (“<h2> thanks for registration </h2> <hr>”);  
+           out.close ();  
+         }  
+ }  
