@@ -1,0 +1,27 @@
+App.js: 
+
+const App = () => { 
+
+  const user = 'TO EDUNETFOUNDATION'; 
+
+ 
+
+  return ( 
+
+    <Message user={user} /> 
+
+  ); 
+
+} 
+
+ 
+
+const Message = ({user}) => { 
+
+  return <h1>Welcome {user}!</h1> 
+
+} 
+
+ 
+
+export default App; 
