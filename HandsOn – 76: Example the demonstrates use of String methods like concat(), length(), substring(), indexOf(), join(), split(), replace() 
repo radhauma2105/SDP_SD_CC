@@ -1,0 +1,105 @@
+public class StringMethodsExample { 
+
+    public static void main(String[] args) { 
+
+        // Concatenation: concat() 
+
+        String firstName = "John"; 
+
+        String lastName = "Doe"; 
+
+        String fullName = firstName.concat(" ").concat(lastName); 
+
+        System.out.println("Full Name: " + fullName); 
+
+ 
+
+        // Length and Access: length(), substring() 
+
+        String message = "Hello, World!"; 
+
+        int messageLength = message.length(); 
+
+        System.out.println("Message Length: " + messageLength); 
+
+ 
+
+        String subMessage = message.substring(7); 
+
+        System.out.println("Sub Message from index 7: " + subMessage); 
+
+ 
+
+        // Searching and Comparing: indexOf(), equals() 
+
+        String sentence = "Java is a programming language."; 
+
+        int index = sentence.indexOf("programming"); 
+
+        if (index != -1) { 
+
+            System.out.println("Word 'programming' found at index: " + index); 
+
+        } else { 
+
+            System.out.println("Word 'programming' not found."); 
+
+        } 
+
+ 
+
+        String str1 = "Hello"; 
+
+        String str2 = "Hello"; 
+
+        String str3 = "World"; 
+
+        boolean areEqual1 = str1.equals(str2); 
+
+        boolean areEqual2 = str1.equals(str3); 
+
+        System.out.println("str1 is equal to str2: " + areEqual1); 
+
+        System.out.println("str1 is equal to str3: " + areEqual2); 
+
+ 
+
+        // Splitting and Joining: split(), join() 
+
+        String countries = "USA,India,Canada,Australia"; 
+
+        String[] countryArray = countries.split(","); 
+
+        for (String country : countryArray) { 
+
+            System.out.println("Country: " + country); 
+
+        } 
+
+ 
+
+        String joinedCountries = String.join(" - ", countryArray); 
+
+        System.out.println("Joined Countries: " + joinedCountries); 
+
+ 
+
+        // Modifying and Replacing: replace(), trim() 
+
+        String sentenceWithWhitespace = "   This is a sentence with whitespace.    "; 
+
+        String trimmedSentence = sentenceWithWhitespace.trim(); 
+
+        System.out.println("Trimmed Sentence: " + trimmedSentence); 
+
+ 
+
+        String replacedSentence = sentenceWithWhitespace.replace("whitespace", "spaces"); 
+
+        System.out.println("Replaced Sentence: " + replacedSentence); 
+
+    } 
+
+} 
+
+ 
