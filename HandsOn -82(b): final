@@ -1,0 +1,33 @@
+import java.io.*; 
+
+class final_gfg { 
+
+String s1 = "EdunetFoundation"; 
+
+} 
+
+class extended_gfg extends final_gfg {					 
+
+String s2 = "Techsaksham"; 
+
+} 
+
+class GFG { 
+
+public static void main(String[] args) 
+
+{ 
+
+// creating object 
+
+extended_gfg obj = new extended_gfg(); 
+
+ 
+
+System.out.println(obj.s1); 
+
+System.out.println(obj.s2); 
+
+} 
+
+} 
