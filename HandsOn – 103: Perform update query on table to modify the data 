@@ -1,0 +1,5 @@
+update people set location='telegana' where id='102'; 
+
+update people set location='newdelhi' where id='103'; 
+
+update people set location='Tamilnadu' where id='104'; 
