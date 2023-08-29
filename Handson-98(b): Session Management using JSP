@@ -1,0 +1,67 @@
+<html> 
+
+<head> 
+
+<title>Welcome to the first program of jsp</title> 
+
+</head> 
+
+<body> 
+
+<form method = "post" action = "FirstPageOfSession.jsp"> 
+
+  <font size = 6>Enter your name<input type = "text" name = "name"></font><br><br> 
+
+  <font size = 6>Enter your password<input type="password" name = "pwd" > 
+
+                </font><br><br> 
+
+<input type = "submit" name = "submit" value = "submit" > 
+
+</form> 
+
+</body> 
+
+</html> 
+
+ <%   
+
+    String name = request.getParameter("name"); 
+
+String password = request.getParameter("pwd"); 
+
+if(name.equals("Williams") && password.equals("abcde")) 
+
+{ 
+
+session.setAttribute("username",name); 
+
+response.sendRedirect("NextPageAfterFirst.jsp"); 
+
+} 
+
+else 
+
+{ 
+
+response.sendRedirect("SessionManagement.html"); 
+
+} 
+
+%> 
+
+ <html> 
+
+<head> 
+
+<title>Welcome in In the program of URL rewriting</title> 
+
+</head> 
+
+<body> 
+
+<font size = 6>Hello</font> <%= session.getAttribute("username") %> 
+
+</body> 
+
+</html> 
