@@ -1,0 +1,99 @@
+Pre-requisite: 
+
+Go to Spring Initializr 
+
+Fill in the details as per the requirements. For this application:  
+
+ Project: Maven  
+
+Language: Java  
+
+Spring Boot: 2.2.8  
+
+Packaging: JAR  
+
+Java: 8  
+
+Dependencies: Spring Web 
+
+Code: 
+
+Step 1: Download the starter project 
+
+Step 2: Extract the zip file. Now open a suitable IDE and then go to File->New->Project from existing sources->Spring-boot-app and select pom.xml. Click on import changes on prompt and wait for the project to sync. 
+
+ Step 3: Go to src->main->java->com.gfg.Spring.boot.app, create a java class with name  
+
+as Controller and add the annotation @RestController. 
+
+@RestController 
+
+public class Controller { 
+
+ 
+
+// One syntax to implement a 
+
+// GET method 
+
+@GetMapping("/") 
+
+public String home() 
+
+{ 
+
+String str 
+
+= "<html><body><font color=\"green\">" 
+
++ "<h1>WELCOME To TECHSAKSHAM</h1>" 
+
++ "</font></body></html>"; 
+
+return str; 
+
+} 
+
+ 
+
+// Another syntax to implement a 
+
+// GET method 
+
+@RequestMapping( 
+
+method = { RequestMethod.GET }, 
+
+value = { "/gfg" }) 
+
+ 
+
+public String info() 
+
+{ 
+
+String str2 
+
+= "<html><body><font color=\"green\">" 
+
++ "<h2> EDUNETFOUNDATION is a Computer" 
+
++ " Science portal for TECHSAKSHAM. " 
+
++ "This portal has been " 
+
++ "created to provide well written, " 
+
++ "well thought and well explained " 
+
++ "solutions for selected questions." 
+
++ "</h2></font></body></html>"; 
+
+return str2; 
+
+} 
+
+} 
+
+Step 4: Run the SpringBootAppApplication class and wait for the Tomcat server to start. 
