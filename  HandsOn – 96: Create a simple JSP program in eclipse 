@@ -1,0 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
+
+<!DOCTYPE html> 
+
+<html> 
+
+<head> 
+
+<title>Hello JSP with Scripting</title> 
+
+</head> 
+
+<body> 
+
+<% 
+
+String message = "Hello, World! This is a JSP example with scripting."; 
+
+%> 
+
+<h1><%= message %></h1> 
+
+</body> 
+
+</html> 
