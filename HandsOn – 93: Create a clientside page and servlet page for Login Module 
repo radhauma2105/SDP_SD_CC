@@ -1,0 +1,155 @@
+1.Login.java  
+
+package in.js.logincode;  
+
+ import jakarta.servlet.ServletException;  
+
+import jakarta.servlet.annotation.WebServlet;  
+
+import jakarta.servlet.http.HttpServlet;  
+
+import jakarta.servlet.http.HttpServletRequest;  
+
+import jakarta.servlet.http.HttpServletResponse;  
+
+import java.io.IOException;  
+
+import java.io.PrintWriter;  
+
+ public class Login extends HttpServlet {  
+
+private static final long serialVersionUID = 1L;   
+
+protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {  
+
+PrintWriter out=response.getWriter();  
+
+out.print("<html><body>");  
+
+out.print("<h1>Login Page</h1>");  
+
+out.print("<p>Welcome, I'm in service method of Login for Browser</p>");  
+
+out.print("</body></html>");  
+
+System.out.println("Welcome, I'm in service method  of Login for console");  
+
+}  
+
+}  
+
+ 
+
+2. Register.java  
+
+package in.js.regcode;  
+
+import jakarta.servlet.ServletException;  
+
+import jakarta.servlet.annotation.WebServlet;  
+
+import jakarta.servlet.http.HttpServlet;  
+
+import jakarta.servlet.http.HttpServletRequest;  
+
+import jakarta.servlet.http.HttpServletResponse;  
+
+import java.io.IOException;  
+
+import java.io.PrintWriter;  
+
+public class Register extends HttpServlet {  
+
+protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {  
+
+ PrintWriter out=response.getWriter();  
+
+out.print("<html><body>");  
+
+out.print("<h1>Registor Page</h1>");  
+
+out.print("<p>Welcome, I'm in service method of Regiter for Browser</p>");  
+
+out.print("</body></html>");  
+
+System.out.println("Welcome, I'm in service method  of Register for console");  
+
+}  
+
+ }  
+
+Index.html  
+
+<!DOCTYPE html>  
+
+<html>  
+
+<head>  
+
+<meta charset="ISO-8859-1">  
+
+<title>Insert title here</title>  
+
+</head>  
+
+<body>  
+
+<h1>Welcome on Index Page</h1>  
+
+<a href="myLogin">Login</a>  
+
+<br>  
+
+<br>  
+
+<a href="myReg">Register</a>  
+
+</body>  
+
+</html>  
+
+web.xml  
+
+<?xml version="1.0" encoding="UTF-8"?>  
+
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd" version="4.0">  
+
+ <welcome-file-list>  
+
+    <welcome-file>index.html</welcome-file>  
+
+  </welcome-file-list>  
+
+   <servlet>  
+
+    <servlet-name>Login</servlet-name>  
+
+    <servlet-class>in.js.logincode.Login</servlet-class>  
+
+  </servlet>  
+
+  <servlet-mapping>  
+
+    <servlet-name>Login</servlet-name>  
+
+    <url-pattern>/myLogin</url-pattern>  
+
+  </servlet-mapping>  
+
+  <servlet>  
+
+    <servlet-name>Register</servlet-name>  
+
+    <servlet-class>in.js.regcode.Register</servlet-class>  
+
+  </servlet>  
+
+  <servlet-mapping>  
+
+    <servlet-name>Register</servlet-name>  
+
+    <url-pattern>/myReg</url-pattern>  
+
+  </servlet-mapping>  
+
+   </web-app>  
