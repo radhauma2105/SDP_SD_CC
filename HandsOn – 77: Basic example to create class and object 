@@ -1,0 +1,95 @@
+// Define a package 
+
+package com.example;  
+
+ // Define a class with public access modifier  
+
+public class Person {  
+
+    // Fields with different access modifiers  
+
+    private String name;        // private field  
+
+    public int age;             // public field  
+
+    protected String address;   // protected field  
+
+    String phoneNumber;         // default (package-private) field  
+
+         // Constructor to initialize the object  
+
+    public Person(String n, int a, String addr, String phone) {  
+
+        name = n;  
+
+        age = a;  
+
+        address = addr;  
+
+        phoneNumber = phone;  
+
+    }  
+
+       // Method with public access modifier  
+
+    public void displayInfo() {  
+
+        System.out.println("Name: " + name);  
+
+        System.out.println("Age: " + age);  
+
+        System.out.println("Address: " + address);  
+
+        System.out.println("Phone: " + phoneNumber);  
+
+    }  
+
+    // Method with private access modifier  
+
+    private void privateMethod() {  
+
+        System.out.println("This is a private method.");  
+
+    }  
+
+        // Static method  
+
+    static void staticMethod() {  
+
+        System.out.println("This is a static method.");  
+
+    }  
+
+        // Final method  
+
+    final void finalMethod() {  
+
+        System.out.println("This is a final method.");  
+
+    }  
+
+    // Entry point of the program  
+
+    public static void main(String[] args) {  
+
+        // Create an object of the class  
+
+        Person person = new Person("Ann", 30, "203 Devukrupa", "555-1527");  
+
+          
+
+        // Call methods on the object  
+
+        person.displayInfo();  
+
+        person.privateMethod(); // Can access private method from within the class    
+
+        // Call static and final methods  
+
+        staticMethod();  
+
+        person.finalMethod();  
+
+    }  
+
+}  
