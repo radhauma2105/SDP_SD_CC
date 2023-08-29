@@ -1,0 +1,143 @@
+Handson – 133: Create a blob storage and add a disk in virtual machine  
+
+Code: 
+
+Step 1: Recover a deleted account from the Azure portal 
+
+To recover a deleted storage account from within another storage account, follow these steps: 
+
+Navigate to the overview page for an existing storage account in the Azure portal. 
+
+In the Support + troubleshooting section, select Recover deleted account. 
+
+From the dropdown, select the account to recover, as shown in the following image. If the storage account that you want to recover is not in the dropdown, then it cannot be recovered. 
+
+ 
+
+Screenshot showing how to recover storage account in Azure portal 
+
+Select the Recover button to restore the account. The portal displays a notification that the recovery is in progress. 
+
+Step 2: Create a Block Blob Storage account 
+
+Create a BlockBlobStorage account in the Azure portal, follow these steps: 
+
+1.	In the Azure portal, select All services > the Storage category > Storage accounts. 
+
+2.	Under Storage accounts, select Add. 
+
+3.	In the Subscription field, select the subscription in which to create the storage account. 
+
+4.	In the Resource group field, select an existing resource group or select Create new, and enter a name for the new resource group. 
+
+5.	In the Storage account name field, enter a name for the account. Note the following guidelines: 
+
+•	The name must be unique across Azure. 
+
+•	The name must be between three and 24 characters long. 
+
+•	The name can include only numbers and lowercase letters. 
+
+6.	In the Location field, select a location for the storage account, or use the default location. 
+
+For the rest of the settings, configure the following: 
+
+TABLE 3 
+
+Field 
+
+Value 
+
+Performance 
+
+Select Premium. 
+
+Account kind 
+
+Select BlockBlobStorage. 
+
+Replication 
+
+Leave the default setting of Locally-redundant storage (LRS). 
+
+ 
+
+Choose the Advanced tab. 
+
+If you want to optimize your storage account for data analytics, then set Hierarchical namespace to Enabled. Otherwise, leave this option set to its default value. Enabling this setting with your BlockBlobStorage account gives you the premium tier for Data Lake Storage. To learn more about Data Lake Storage, see Introduction to Azure Data Lake Storage Gen2. 
+
+Select Review + create to review the storage account settings. 
+
+Select Create
+Step 3: Upload, download, and list blobs with the Azure portal. 
+
+Create a container 
+
+To create a container in the Azure portal, follow these steps: 
+
+1.	Navigate to your new storage account in the Azure portal. 
+
+2.	In the left menu for the storage account, scroll to the Blob service section, then select Containers. 
+
+3.	Select the + Container button. 
+
+4.	Type a name for your new container. The container name must be lowercase, must start with a letter or number, and can include only letters, numbers, and the dash (-) character. For more information about container and blob names, see Naming and referencing containers, blobs, and metadata. 
+Set the level of public access to the container. The default level is Private (no anonymous access). 
+
+Select OK to create the container. 
+
+Upload a block blob 
+
+Block blobs consist of blocks of data assembled to make a blob. Most scenarios using Blob storage employ block blobs. Block blobs are ideal for storing text and binary data in the cloud, like files, images, and videos. This quick start shows how to work with block blobs. 
+
+ 
+
+ 
+
+To upload a block blob to your new container in the Azure portal, follow these steps: 
+
+In the Azure portal, navigate to the container you created in the previous section. 
+
+Select the container to show a list of blobs it contains. This container is new, so it won't yet contain any blobs. 
+
+Select the Upload button to open the upload blade and browse your local file system to find a file to upload as a block blob. You can optionally expand the Advanced section to configure other settings for the upload operation. 
+
+Select the Upload button to upload the blob. 
+
+Upload as many blobs as you like in this way. You'll see that the new blobs are now listed within the container. 
+
+Download a block blob 
+
+You can download a block blob to display in the browser or save to your local file system. To download a block blob, follow these steps: 
+
+Navigate to the list of blobs that you uploaded in the previous section. 
+
+Right-click the blob you want to download, and select Download. 
+
+ 
+
+Screenshot showing how to download a blob in the Azure portal 
+
+Archive Blob 
+
+ 
+
+Enabling Archiving with Azure Blob Storage 
+
+ 
+
+Sign in to the Azure portal. 
+
+In the Azure portal, search for and select All Resources. 
+
+Select your storage account. 
+
+Select your container and then select your blob. 
+
+In the Blob properties, select Change tier. 
+
+Select the Hot or Cool access tier. 
+
+Select a Rehydrate Priority of Standard or High. 
+
+Select Save at the bottom. 
