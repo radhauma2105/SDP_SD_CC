@@ -1,0 +1,83 @@
+import java.util.Scanner;  
+
+ public class SwitchStatementExample {  
+
+    public static void main(String[] args) {  
+
+               // Create a Scanner object to read input from the user  
+
+         Scanner scanner = new Scanner(System.in);  
+
+   // Prompt the user to enter a number (1 to 7)  
+
+       System.out.print("Enter a number (1 to 7): ");  
+
+        int dayNumber = scanner.nextInt();  
+
+   // Use switch statement to determine the name of the day  
+
+       String dayName;  
+
+         switch (dayNumber) {  
+
+            case 1:  
+
+                dayName = "Sunday";  
+
+                break;  
+
+            case 2:  
+
+                dayName = "Monday";  
+
+break;  
+
+case 3:  
+
+  dayName = "Tuesday";  
+
+  break;  
+
+  case 4:  
+
+               dayName = "Wednesday";  
+
+                 break;  
+
+            case 5:  
+
+                dayName = "Thursday";  
+
+                break;  
+
+            case 6:  
+
+                dayName = "Friday";  
+
+                break;  
+
+            case 7:  
+
+                dayName = "Saturday";  
+
+                break;  
+
+            default:  
+
+                dayName = "Invalid day number";  
+
+                break;  
+
+        }  
+
+ // Display the name of the day  
+
+        System.out.println("The day is: " + dayName);  
+
+       // Close the Scanner object  
+
+       scanner.close();  
+
+    }  
+
+} 
