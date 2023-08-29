@@ -1,0 +1,43 @@
+ode: 
+
+Create a static HTML web app by using Azure Cloud Shell 
+
+In the Cloud Shell, create a quickstart directory and then change to it. 
+
+mkdir <directory name> 
+
+cd <directory name> 
+
+ 
+
+Next, run the following command to clone the sample app repository to your quickstart directory. 
+
+git clone https://github.com/Azure-Samples/html-docs-hello-world.git 
+
+ 
+
+Change to the directory that contains the sample code and run the az webapp up command. In the following example, replace <app_name> with a unique app name. Static content is indicated by the --html flag. 
+
+ 
+
+ Make a note of the resourceGroup value. 
+
+ 
+
+Browse to the app 
+
+In a browser, go to the app URL: http://<app_name>.azurewebsites.net. 
+
+Inserting image... 
+
+The page is running as an Azure App Service web app. 
+
+You've deployed your first HTML app to App Service. 
+
+ 
+
+ 
+
+ 
+
+ 
