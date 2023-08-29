@@ -1,0 +1,83 @@
+Step 1: Create ResourceController Class 
+
+@RestController 
+
+public class ResourceController{ 
+
+ 
+
+    @Autowired 
+
+    ResourceService resourceService; 
+
+ 
+
+    @PostMapping("/saveTeacher") 
+
+    public void saveTeacher(@RequestBody Teacher  teacher){ 
+
+        resourceService.saveTeacher(teacher); 
+
+    } 
+
+ 
+
+    @GetMapping("/getTeacherDetails/{id}") 
+
+    public Teacher getTeacherDetails(@PathVariable("id") int id){ 
+
+        return resourceService.getTeacherDetails(id); 
+
+    } 
+
+}    
+
+Step2: Create a Service class 
+
+@Service 
+
+public class ResourceService{ 
+
+  @Autowired 
+
+    ResourceRepository repository; 
+
+    public void saveTeacher(Teacher teacher){ 
+
+        repository.saveTeacher(teacher); 
+
+    } 
+
+    public Teacher getTeacherDetails(int id ){ 
+
+        return repository.getTeacherDetails(id); 
+
+    } 
+
+} 
+
+Step3: Create a Repository class 
+
+@Service 
+
+public class ResourceService{ 
+
+@Autowired 
+
+    ResourceRepository repository; 
+
+public void saveTeacher(Teacher teacher){ 
+
+        repository.saveTeacher(teacher);} 
+
+ 
+
+    public Teacher getTeacherDetails(int id ){ 
+
+        return repository.getTeacherDetails(id); 
+
+    } 
+
+} 
+
+ Step 4:To run the application, right click on Application.java and click on Run As Java Application.  
