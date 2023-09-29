@@ -1,0 +1,19 @@
+public class NonPrimitiveDataTypesExample {
+    public static void main(String[] args) {
+              // String: Represents a sequence of characters
+        String myString = "Hello, World!";
+        System.out.println("String: " + myString);
+        // Array: Represents a collection of numbers
+        int[] myIntArray = {1, 2, 3, 4, 5};
+             for(int i=0;i<myIntArray.length;i++){
+            System.out.println(myIntArray[i]);
+        }
+        System.out.println();
+        // Array: Represents a collection of charecters
+        char[] myCharArray = {'H', 'e', 'l', 'l', 'o'};
+        for(int j=0;j<myCharArray.length;j++){
+            System.out.println(myCharArray[j]);
+        }
+        System.out.println();
+    }
+}
